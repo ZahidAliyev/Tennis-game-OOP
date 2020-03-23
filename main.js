@@ -7,6 +7,7 @@ const canvasHeight = canvas.height;
 //
 window.onload = function() {
     function loop() {
+        update();
         drawAll();
         requestAnimationFrame(loop);
     }

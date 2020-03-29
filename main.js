@@ -7,9 +7,13 @@ const canvasHeight = canvas.height;
 //
 window.onload = function() {
     function loop() {
-        update();
-        
+        game();
         requestAnimationFrame(loop);
     }
     requestAnimationFrame(loop);
+    canvas.addEventListener("mousemove", movePaddle);
+}
+function game() {
+    update();
+    drawAll();
 }

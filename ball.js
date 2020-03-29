@@ -16,8 +16,6 @@ const ball = {
     if (this.y - this.radius <= 0 || this.y + this.radius >= canvasHeight) {
       ball.velocityY = -ball.velocityY;
     }
-    if (this.x - this.radius <= 0 || this.x + this.radius >= canvasWidth) {
-      ball.velocityX = -ball.velocityX;
-    }
+
   }
 };

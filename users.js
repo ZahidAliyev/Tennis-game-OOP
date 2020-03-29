@@ -35,3 +35,17 @@ const comp = {
         
     }
 }
+
+function collision(b, u) {
+    u.top = u.y;
+    u.bottom = u.y + u.height;
+    u.left = u.x;
+    u.right = u.x + u.width;
+
+    b.top = b.y - b.radius;
+    b.bottom = b.y + b.radius;
+    b.left = b.x - b.radius;
+    b.right = b.x + b.radius;
+
+    return b.right > u.left && b.top < u.bottom && b.left < u.right && b.bottom > u.top;
+}

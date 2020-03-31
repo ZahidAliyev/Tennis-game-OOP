@@ -7,23 +7,40 @@ function resetInGame() {
   ball.velocityX = -ball.velocityX;
   ball.speed = getRandomIntInclusive(6, 9);
 }
-function resetAll() {
+function resetOnePlayerMode() {
   comp.score = 0;
   player.score = 0;
   ball.speed = 7;
   lvlChange();
-
 }
+
+function resetAll() {
+  computerWon = false;
+  lvl_2 = false;
+  lvl_3 = false;
+  leftPlayerWon = false;
+  rightPlayerWon = false;
+  playerWon = false;
+}
+
 function update() {
   //-----------------------if one player True. 1 PLAYER MODE
-    if(onePlayer) {
-        onePlayerModeActions();
-        onePlayerWinCondition();
+  if (onePlayer) {
+    if(pause) {
+
+      return;
     }
-    musicTurnOnOff();
-    soundsTurnOnOff();
-  // -----------------------IF SOMEONE WON  
-
-  
-
+    onePlayerModeActions();
+    onePlayerWinCondition();
+  }
+  if (localTwoPlayers) {
+    if(pause) {
+      
+      return;
+    }
+    twoPlayersModeActions();
+    twoPlayersWinCondition();
+  }
+  musicTurnOnOff();
+  soundsTurnOnOff();
 }

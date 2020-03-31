@@ -1,3 +1,18 @@
+function keyPressTrigger(e, leftUpKey, leftDownKey, rightUpKey, rightDownKey, isPressed) {
+    if(e.code === leftUpKey) {
+        leftPlayerUpPressed = isPressed;
+    };
+    if(e.code === leftDownKey) {
+        leftPlayerDownPressed = isPressed;
+    };
+    if(e.code === rightUpKey) {
+        rightPlayerUpPressed = isPressed;
+    };
+    if(e.code === rightDownKey) {
+        rightPlayerDownPressed = isPressed;
+    };
+}
+
 function clickCoordinate(e, widthDivision, heightDivision, leftX, rightX, topY, bottomY) {
     return (e.offsetX >= (canvasWidth / widthDivision) * leftX &&
     e.offsetX <= (canvasWidth / widthDivision) * rightX &&
@@ -10,37 +25,57 @@ function movePaddle(e) {
     }
     
 }
+function twoPlayerControlKeyDown(e) {
+    if(localTwoPlayers) {
+        console.log(e.code);
+        keyPressTrigger(e, "KeyW", "KeyS", "Numpad8", "Numpad2", true);
+    }
+}
+
+function twoPlayerControlKeyUp(e) {
+    if(localTwoPlayers) {
+        keyPressTrigger(e, "KeyW", "KeyS", "Numpad8", "Numpad2", false);
+
+    }
+}
+
+function Pause(e) {
+    if(e.code === "KeyP") {
+        if(pause) {
+            pause = false;
+        } else {
+            pause = true;
+        }
+        
+    };
+}
+
 function menuClick(e) {
     if(menu) {
-        if (
-            e.offsetX >= (canvasWidth / 10) * 4 &&
-            e.offsetX <= (canvasWidth / 10) * 6 &&
-            e.offsetY >= (canvasHeight / 12)* 3 &&
-            e.offsetY <= (canvasHeight / 12)* 4
-        ) {
+        // ONE PLAYER
+        if (clickCoordinate(e, 10, 12, 4, 6, 3, 4)) {
             onePlayer = true;
             menu = false;
         };
-        if (
-            e.offsetX >= (canvasWidth / 10) * 4 &&
-            e.offsetX <= (canvasWidth / 10) * 6 &&
-            e.offsetY >= (canvasHeight / 12)* 3 &&
-            e.offsetY <= (canvasHeight / 12)* 4
-        ) {
-            onePlayer = true;
+        // 2 PLAYER LOCAL
+        if (clickCoordinate(e, 10, 12, 4, 6, 4, 5)) {
+            localTwoPlayers = true;
             menu = false;
+            console.log("menuClick -> localTwoPlayers", localTwoPlayers)
+            // menu = false;
         };
+
         //GO TO OPTIONS
         if(clickCoordinate(e, 10, 12, 4, 6, 6.5, 7)) {
             menu = false;
             options = true;
         }
     }
+    // ------- G0 to Menu From Game Over
     if(gameOver) {
         if (clickCoordinate(e, 10, 12, 3.8, 6, 5, 6)) {
-            console.log("asdasd");
             menu = true;
-            console.log("menuClick -> menu", menu)
+            resetAll();
             gameOver = false;
         };
     }
@@ -72,6 +107,14 @@ function menuClick(e) {
                 soundsOn = true;
             }
         }
+    }
 
+    if(pause) {
+        if(clickCoordinate(e, 10, 12, 3.8, 8, 6, 7)) {
+            menu = true;
+            pause = false;
+            onePlayer = false;
+            localTwoPlayers = false;
+        }
     }
 }

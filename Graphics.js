@@ -36,16 +36,34 @@ function drawAll() {
   //multiplayer
 
   // options
-
+  if(options) {
+    context.font = "30px fantasy";
+    drawRectangle(0, 0, canvasWidth, canvasHeight, "black");
+    drawText("Music " + onOrOff, (canvasWidth / 10) * 4, (canvasHeight / 12)* 4, "white");
+    drawText("Sound " + soundsOnOrOffText, (canvasWidth / 10) * 4, (canvasHeight / 12) * 5, "white");
+    drawText("Back to menu", (canvasWidth / 10) * 4, (canvasHeight / 12) * 6, "white");
+  }
   //Menu
   if(menu) {
     context.font = "30px fantasy";
     drawRectangle(0, 0, canvasWidth, canvasHeight, "black");
     drawText("One player", (canvasWidth / 10) * 4, (canvasHeight / 12)* 4, "white");
     drawText("Two players local", (canvasWidth / 10) * 4, (canvasHeight / 12) * 5, "white");
-    drawText("Multiplayer.", (canvasWidth / 10) * 4, (canvasHeight / 12) * 6, "white");
+    drawText("Multiplayer", (canvasWidth / 10) * 4, (canvasHeight / 12) * 6, "white");
     drawText("Options", (canvasWidth / 10) * 4, (canvasHeight / 12) * 7, "white");
   }
   
   // Game over
+  if(gameOver) {
+    context.font = "30px fantasy";
+    drawRectangle(0, 0, canvasWidth, canvasHeight, "black");
+    drawText("Go to menu", (canvasWidth / 10) * 4, (canvasHeight / 12) * 6, "white");
+    if(computerWon) {
+      drawText("Computer Won", (canvasWidth / 10) * 4, (canvasHeight / 12) * 5, "white");
+    };
+    if(playerWon) {
+      drawText("Player Won", (canvasWidth / 10) * 4, (canvasHeight / 12) * 5, "white");
+    }
+
+  }
 }

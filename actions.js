@@ -1,3 +1,19 @@
+function collision(b, u) {
+  u.top = u.y;
+  u.bottom = u.y + u.height;
+  u.left = u.x;
+  u.right = u.x + u.width;
+
+  b.top = b.y - b.radius;
+  b.bottom = b.y + b.radius;
+  b.left = b.x - b.radius;
+  b.right = b.x + b.radius;
+
+  return (
+    b.right > u.left && b.top < u.bottom && b.left < u.right && b.bottom > u.top
+  );
+}
+
 function onePlayerModeActions() {
   ball.Move();
   comp.move();
@@ -8,7 +24,7 @@ function onePlayerModeActions() {
     hit.play();
     let collidePoint =
       (ball.y - (user.y + user.height / 2)) / (user.height / 2);
-    let angleRad = (collidePoint * Math.PI) / 3;
+    let angleRad = (collidePoint * Math.PI) / 4;
 
     let direction = ball.x < canvasWidth / 2 ? 1 : -1;
 
@@ -20,9 +36,11 @@ function onePlayerModeActions() {
 //--------------------------- GOAL
   if (ball.x - ball.radius < 0) {
     comp.score += 1;
-    reset();
+    console.log("onePlayerModeActions -> comp.score", comp.score)
+    resetInGame();
   } else if (ball.x + ball.radius > canvasWidth) {
     player.score += 1;
-    reset();
+    console.log("onePlayerModeActions -> player.score", player.score)
+    resetInGame();
   }
 }

@@ -13,7 +13,7 @@ const ball = {
     this.x += this.velocityX;
     this.y += this.velocityY;
 
-    if (this.y - this.radius <= 0 || this.y + this.radius >= canvasHeight) {
+    if (this.y - this.radius < 0 || this.y + this.radius > canvasHeight) {
       ball.velocityY = -ball.velocityY;
     }
 

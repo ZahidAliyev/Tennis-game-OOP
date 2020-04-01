@@ -1,5 +1,5 @@
-const hit = new Audio("/client/sounds/hit.mp3");
-const tennisMusic = new Audio("/client/sounds/tennisMusic.mp3");
+const hit = new Audio("sounds/hit.mp3");
+const tennisMusic = new Audio("sounds/tennisMusic.mp3");
 
 var onOrOff = "Off";
 

@@ -5,12 +5,12 @@ function resetInGame() {
   ball.x = canvasWidth / 2;
   ball.y = canvasHeight / 2;
   ball.velocityX = -ball.velocityX;
-  ball.speed = getRandomIntInclusive(6, 9);
+  ball.speed = getRandomIntInclusive(7, 9);
 }
 function resetOnePlayerMode() {
   comp.score = 0;
   player.score = 0;
-  ball.speed = 7;
+  ball.speed = 8;
   lvlChange();
 }
 

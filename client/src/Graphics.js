@@ -79,6 +79,8 @@ function drawAll() {
     drawText("1 player control : Mouse", (canvasWidth / 10) * 4, (canvasHeight / 12) * 7, "white");
     drawText("2 player control : W(up) | S(down) ", (canvasWidth / 10) * 4, (canvasHeight / 12) * 8, "white");
     drawText("8(up) | 2(down)", (canvasWidth / 10) * 6.6, (canvasHeight / 12) * 9, "white");
+    drawText("P for pause", (canvasWidth / 10) * 4, (canvasHeight / 12) * 10, "white");
+
 
   }
   //Menu

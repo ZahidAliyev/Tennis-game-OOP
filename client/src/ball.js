@@ -6,8 +6,8 @@ const ball = {
   speed: 5,
   xDirection: Math.random() < 0.5 ? 1 : -1,
   yDirection: Math.random() < 0.5 ? 1 : -1,
-  velocityX: 5,
-  velocityY: 5,
+  velocityX: 8,
+  velocityY: 8,
 
   Move: function() {
     this.x += this.velocityX;

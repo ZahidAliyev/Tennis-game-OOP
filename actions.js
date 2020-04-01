@@ -16,7 +16,7 @@ function collision(b, u) {
 
 function onePlayerModeActions() {
   ball.Move();
-  // comp.move();
+  comp.move();
   //--------Does ball collide with Player or Computer ?
   let user = ball.x < canvasWidth / 2 ? player : comp;
   //---------If ball collide with User

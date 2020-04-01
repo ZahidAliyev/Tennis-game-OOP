@@ -4,7 +4,7 @@ const context = canvas.getContext("2d");
 const canvasWidth = canvas.width;
 const canvasHeight = canvas.height;
 
-const winningScore = 1;
+const winningScore = 3;
 
 // Triggers
 var menu = true;
